@@ -8,5 +8,6 @@ public class LeaveAllocation : BaseEntity
 #nullable enable
     public LeaveType? LeaveType { get; set; }
     public int LeaveTypeId { get; set; }
+    public string EmployeeId { get; set; } = string.Empty;
     public int Period { get; set; }
 }
