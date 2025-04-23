@@ -1,17 +1,16 @@
 ﻿using FluentValidation;
 using HRLeaveManagement.Application.Contracts.Persistence;
+using HRLeaveManagement.Application.Features.LeaveType.Shared;
 
 namespace HRLeaveManagement.Application.Features.LeaveType.Commands.UpdateLeaveType;
 
 public class UpdateLeaveTypeCommandValidator : AbstractValidator<UpdateLeaveTypeCommand>
 {
-    private readonly ILeaveTypeRepository _leaveTypeRepository;
-
     public UpdateLeaveTypeCommandValidator(ILeaveTypeRepository leaveTypeRepository)
     {
         RuleFor(p => p.Id)
             .NotNull()
-            .MustAsync(LeaveTypeMustExist);
+            .MustAsync((id, token) => LeaveTypeHelper.LeaveTypeMustExist(id, token, leaveTypeRepository));
 
         RuleFor(p => p.Name)
             .NotEmpty().WithMessage("{PropertyName} is required")
@@ -23,20 +22,7 @@ public class UpdateLeaveTypeCommandValidator : AbstractValidator<UpdateLeaveType
             .GreaterThan(1).WithMessage("{PropertyName} cannot be less than 1");
 
         RuleFor(p => p)
-            .MustAsync(LeaveTypeNameUnique)
+            .MustAsync((command, token) => LeaveTypeHelper.LeaveTypeNameUnique(command.Name, token, leaveTypeRepository))
             .WithMessage("Leave type already exists");
-
-        _leaveTypeRepository = leaveTypeRepository;
-    }
-
-    private async Task<bool> LeaveTypeMustExist(int id, CancellationToken arg2)
-    {
-        var leaveType = await _leaveTypeRepository.GetByIdAsync(id);
-        return leaveType != null;
-    }
-
-    private async Task<bool> LeaveTypeNameUnique(UpdateLeaveTypeCommand command, CancellationToken arg)
-    {
-        return await _leaveTypeRepository.IsLeaveTypeUnique(command.Name);
     }
 }

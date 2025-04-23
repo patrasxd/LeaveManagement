@@ -12,14 +12,9 @@ public class DeleteLeaveTypeCommandHandler : IRequestHandler<DeleteLeaveTypeComm
 
     public async Task<Unit> Handle(DeleteLeaveTypeCommand request, CancellationToken cancellationToken)
     {
-        // get object from database
-        var leaveTypeToDelete = await _leaveTypeRepository.GetByIdAsync(request.Id);
-
-        // verify if record exists
-        if (leaveTypeToDelete == null)
-        {
+        // get leaveType and check if it exists
+        var leaveTypeToDelete = await _leaveTypeRepository.GetByIdAsync(request.Id) ??
             throw new NotFoundException(nameof(LeaveType), request.Id);
-        }
 
         // remove from database
         await _leaveTypeRepository.DeleteAsync(leaveTypeToDelete);
