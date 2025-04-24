@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A8C15F9B-8714-44C3-8A68-ECF652A161E3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{869CCA70-C1BE-45AA-AFAE-E7CFF36F91D6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{869CCA70-C1BE-45AA-AFAE-E7CFF36F91D6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{6B888616-01C2-4385-92F2-5CDD00782B25}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRLeaveManagement.Infrastructure", "HRLeaveManagement.Infrastructure\HRLeaveManagement.Infrastructure.csproj", "{AC4F4C85-2140-4FF0-B740-610421227A25}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRLeaveManagement.Api", "HRLeaveManagement.Api\HRLeaveManagement.Api.csproj", "{7590D40A-0E19-47D0-86E8-CC7F16781E65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRLeaveManagement.Application.UnitTests", "HRLeaveManagement.Application.UnitTests\HRLeaveManagement.Application.UnitTests.csproj", "{08F9A915-2463-4CC1-A16B-8ABB76B71FBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{7590D40A-0E19-47D0-86E8-CC7F16781E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7590D40A-0E19-47D0-86E8-CC7F16781E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7590D40A-0E19-47D0-86E8-CC7F16781E65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08F9A915-2463-4CC1-A16B-8ABB76B71FBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08F9A915-2463-4CC1-A16B-8ABB76B71FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08F9A915-2463-4CC1-A16B-8ABB76B71FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08F9A915-2463-4CC1-A16B-8ABB76B71FBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +71,7 @@ Global
 		{367E07A8-C5E3-4F49-ABF3-0CFD2F4BEB0C} = {D2E18148-D055-44C3-BEF3-491ED88B9E43}
 		{AC4F4C85-2140-4FF0-B740-610421227A25} = {D2E18148-D055-44C3-BEF3-491ED88B9E43}
 		{7590D40A-0E19-47D0-86E8-CC7F16781E65} = {6B888616-01C2-4385-92F2-5CDD00782B25}
+		{08F9A915-2463-4CC1-A16B-8ABB76B71FBA} = {A8C15F9B-8714-44C3-8A68-ECF652A161E3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C7BB47BD-F6BD-4138-83C6-0309A80124DC}
