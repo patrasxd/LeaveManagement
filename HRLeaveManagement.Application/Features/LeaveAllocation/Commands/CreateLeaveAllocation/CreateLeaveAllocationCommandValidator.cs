@@ -1,24 +1,16 @@
 ﻿using FluentValidation;
 using HRLeaveManagement.Application.Contracts.Persistence;
+using HRLeaveManagement.Application.Features.LeaveType.Shared;
 
 namespace HRLeaveManagement.Application.Features.LeaveAllocation.Commands.CreateLeaveAllocation;
 
 public class CreateLeaveAllocationCommandValidator : AbstractValidator<CreateLeaveAllocationCommand>
 {
-    private readonly ILeaveTypeRepository _leaveTypeRepository;
-
     public CreateLeaveAllocationCommandValidator(ILeaveTypeRepository leaveTypeRepository)
     {
-        _leaveTypeRepository = leaveTypeRepository;
-
         RuleFor(p => p.LeaveTypeId)
             .GreaterThan(0)
-            .MustAsync(LeaveTypeMustExist)
+            .MustAsync((id, token) => LeaveTypeHelper.LeaveTypeMustExist(id, token, leaveTypeRepository))
             .WithMessage("{PropertyName} must be present.");
-    }
-
-    private async Task<bool> LeaveTypeMustExist(int id, CancellationToken token)
-    {
-        return await _leaveTypeRepository.GetByIdAsync(id) != null;
     }
 }

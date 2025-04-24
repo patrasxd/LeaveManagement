@@ -1,5 +1,4 @@
 ﻿using HRLeaveManagement.Application.Contracts.Persistence;
-using HRLeaveManagement.Application.Features.LeaveType.Commands.CreateLeaveType;
 
 namespace HRLeaveManagement.Application.Features.LeaveType.Shared;
 
