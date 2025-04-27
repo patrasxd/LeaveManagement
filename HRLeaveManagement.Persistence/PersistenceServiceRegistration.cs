@@ -11,7 +11,7 @@ public static class PersistenceServiceRegistration
 {
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<HRDatabaseContext>(options =>
+        services.AddDbContext<HrDatabaseContext>(options =>
         {
             options.UseSqlServer(configuration.GetConnectionString("HrDatabaseConnectionString"));
         });

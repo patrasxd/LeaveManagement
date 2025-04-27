@@ -7,9 +7,9 @@ namespace HRLeaveManagement.Persistence.Repositories;
 
 public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 {
-    protected readonly HRDatabaseContext _context;
+    protected readonly HrDatabaseContext _context;
 
-    public GenericRepository(HRDatabaseContext context)
+    public GenericRepository(HrDatabaseContext context)
     {
         _context = context;
     }

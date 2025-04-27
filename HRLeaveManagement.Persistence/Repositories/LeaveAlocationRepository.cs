@@ -7,7 +7,7 @@ namespace HRLeaveManagement.Persistence.Repositories;
 
 public class LeaveAlocationRepository : GenericRepository<LeaveAllocation>, ILeaveAllocationRepository
 {
-    public LeaveAlocationRepository(HRDatabaseContext context) : base(context)
+    public LeaveAlocationRepository(HrDatabaseContext context) : base(context)
     {
     }
 

@@ -1,13 +1,12 @@
 ﻿using HRLeaveManagement.Domain;
 using HRLeaveManagement.Domain.Common;
-using HRLeaveManagement.Persistence.Configurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRLeaveManagement.Persistence.DatabaseContext;
 
-public class HRDatabaseContext : DbContext
+public class HrDatabaseContext : DbContext
 {
-    public HRDatabaseContext(DbContextOptions<HRDatabaseContext> options) : base(options)
+    public HrDatabaseContext(DbContextOptions<HrDatabaseContext> options) : base(options)
     {
 
     }
@@ -18,7 +17,7 @@ public class HRDatabaseContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(HRDatabaseContext).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(HrDatabaseContext).Assembly);
         //modelBuilder.ApplyConfiguration(new LeaveTypeConfiguration()); <- this is not needed anymore as we are using ApplyConfigurationsFromAssembly
 
         base.OnModelCreating(modelBuilder);
