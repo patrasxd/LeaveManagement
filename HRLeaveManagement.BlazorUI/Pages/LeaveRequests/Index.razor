@@ -82,10 +82,10 @@
                     @item.Employee.Firstname @item.Employee.Lastname
                 </td>
                 <td>
-                    @item.StartDate.Value.ToString("yyyy-MM-dd")
+                    @item.StartDate?.ToString("yyyy-MM-dd")
                 </td>
                 <td>
-                    @item.EndDate.Value.ToString("yyyy-MM-dd")
+                    @item.EndDate?.ToString("yyyy-MM-dd")
                 </td>
                 <td>
                     @item.LeaveType.Name
