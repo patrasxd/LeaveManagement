@@ -8,42 +8,42 @@
 ---
 ## 🌍 Core
 
-- 🏢 Projekt: HRLeaveManagement.Application
-  - ❔ Logika aplikacyjna: use cases, serwisy aplikacyjne, interfejsy kontraktowe do komunikacji z warstwami zewnętrznymi.
+- 🏢 Project: HRLeaveManagement.Application
+  - ❔ Application logic: use cases, application services, contract interfaces for communication with external layers.
 
   - 📁 Contracts
-    - ❔ Definicje interfejsów, DTOs i komunikatów, które służą do komunikacji między różnymi warstwami systemu lub z systemami zewnętrznymi, zapewniając luźne powiązanie i czytelne kontrakty pomiędzy komponentami.
+    - ❔ Definitions of interfaces, DTOs, and messages used for communication between different layers of the system or with external systems, ensuring loose coupling and clear contracts between components.
 
     - 📁 Email
-      - ❔ Interfejs do wysyłania maili.
+      - ❔ Interface for sending emails.
       - 🗒️ `IEmailSender.cs`
         
     - 📁 Logging
-      - ❔ Interfejs do logowania (błędów, notyfikacji).
+      - ❔ Interface for logging (errors, notifications).
       - 🗒️ `IAppLogger.cs`
 
     - 📁 Persistence
-      - ❔ Interfejsy repozytoriów definiujące kontrakty dostępu do danych dla warstwy aplikacji.
+      - ❔ Repository interfaces defining data access contracts for the application layer.
       - 🗒️ `IGenericRepository.cs`
       - 🗒️ `ILeaveTypeRepository.cs`
 
   - 📁 Exceptions
-    - ❔ Klasy wyjątków reprezentujące błędy aplikacyjne, np. walidacji czy braku zasobu.
+    - ❔ Exception classes representing application errors, e.g., validation or missing resource.
     - 🗒️ `BadRequestException.cs`
 
   - 📁 Features
-    - ❔ Grupuje przypadki użycia (use cases) według funkcjonalności systemu i dzieli je na Commands i Queries, implementując logikę obsługi żądań (CQRS) przy użyciu MediatR.
+    - ❔ Groups use cases according to system functionality and divides them into Commands and Queries, implementing request handling logic (CQRS) using MediatR.
       
     - 📁 Commands
-      - ❔ Modyfikacje danych (Create, Update, Delete).
+      - ❔ Data modifications (Create, Update, Delete).
         
       - 📁 CreateLeaveType
         - 🗒️ `CreateLeaveTypeCommand.cs`
-          - ❔ Struktura danych wyjściowych.
+          - ❔ Output data structure.
         - 🗒️ `CreateLeaveTypeCommandHandler.cs`
-          - ❔ Logika wykonania żądania.
+          - ❔ Request execution logic.
         - 🗒️ `CreateLeaveTypeCommandValidator.cs`
-          - ❔ Walidacja danych wejściowych.
+          - ❔ Input data validation.
             
       - 📁 DeleteLeaveType
         
@@ -54,51 +54,51 @@
       - 📁 GetLeaveTypeDetails
 
   - 📁 MappingProfiles
-    - ❔ Konfiguracje AutoMappera do mapowania między encjami domenowymi a obiektami DTO, wykorzystywane w komendach i zapytaniach aplikacji.
+    - ❔ AutoMapper configurations for mapping between domain entities and DTO objects, used in application commands and queries.
       - 🗒️ `LeaveTypeProfile.cs`
 
   - 📁 Models
-    - ❔ Zawiera klasy pomocnicze reprezentujące dane konfiguracyjne lub struktury komunikatów.
+    - ❔ Contains helper classes representing configuration data or message structures.
     -  📁 Email
       -  🗒️ `EmailMessage.cs`
       -  🗒️ `EmailSettings.cs`
         
   -  🗒️ `ApplicationServiceRegistration.cs`
-    -  ❔ Rejestruje w DI komponenty aplikacyjne, np. AutoMapper, MediatR, validatory i inne zależności z warstwy Application.
+    -  ❔ Registers application components in DI, e.g., AutoMapper, MediatR, validators, and other dependencies from the Application layer.
 
 ---
 ## 🌍 Infrastructure
 
-- 🏢 Projekt: HRLeaveManagement.Infrastructure
-  - ❔ Implementuje techniczne szczegóły i zależności zewnętrzne, np. wysyłkę e-maili, logowanie, integracje z API itp.
+- 🏢 Project: HRLeaveManagement.Infrastructure
+  - ❔ Implements technical details and external dependencies, e.g., sending emails, logging, API integrations, etc.
     
   - 📁 EmailService
-    - ❔ Zawiera implementację usługi do wysyłania e-maili.
+    - ❔ Contains the implementation of the email sending service.
       - 🗒️ `EmailSender.cs`
       
   - 📁 Logging
-    - ❔ Zawiera adapter do logowania.
+    - ❔ Contains the logging adapter.
       - 🗒️ `LoggerAdapter.cs`
       
   -  🗒️ `InfrastructureServiceRegistration.cs`
-    -  ❔ Plik rejestrujący usługi infrastruktury w kontenerze DI.
+    -  ❔ File registering infrastructure services in the DI container.
 
-- 🏢 Projekt: HRLeaveManagement.Persistence
-  - ❔ Odpowiada za implementację dostępu do danych (np. za pomocą Entity Framework) i zawiera klasy repozytoriów, konfigurację bazy danych oraz wszelkie powiązane ustawienia.
+- 🏢 Project: HRLeaveManagement.Persistence
+  - ❔ Responsible for implementing data access (e.g., using Entity Framework) and contains repository classes, database configuration, and any related settings.
   
   - 📁 Configurations
-    - ❔ Zawiera konfiguracje encji, które są stosowane w modelu danych.
+    - ❔ Contains entity configurations used in the data model.
       - 🗒️ `LeaveTypeConfiguration.cs`
 
   - 📁 DatabaseContext
-    - ❔ Zawiera kontekst bazy danych (DbContext), który łączy aplikację z bazą danych.
+    - ❔ Contains the database context (DbContext) that connects the application to the database.
       - 🗒️ `HRDatabaseContext.cs`
 
   - 📁 Repositories
-    - ❔ Zawiera implementacje repozytoriów, które służą jako warstwa dostępu do danych w aplikacji.
+    - ❔ Contains implementations of repositories that serve as the data access layer in the application.
       - 🗒️ `GenericRepository.cs`
       - 🗒️ `LeaveAlocationRepository.cs`
       - 🗒️ `LeaveTypeRepository.cs`
       
   - 🗒️ `PersistenceServiceRegistration.cs`
-    - ❔ Rejestruje wszystkie usługi związane z dostępem do danych w kontenerze DI.
+    - ❔ Registers all data access-related services in the DI container.
